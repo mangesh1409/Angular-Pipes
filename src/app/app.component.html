@@ -1,2 +1,85 @@
 <h2 style="text-align: center;">Pipes</h2><hr>
 <span>{{ title }} app is running!</span><br><br>
+
+<h2 style="text-align: center;">Upper Case Pipe</h2><hr>
+<b>{{title | uppercase}}</b><br/>
+<h2 style="text-align: center;">Lower Case Pipe</h2><hr>
+<b>{{str | lowercase}}</b><br/>
+<h2 style="text-align: center;">Title Case Pipe</h2><hr>
+<b>{{str | titlecase}}</b><br/>
+<h2 style="text-align: center;">Slice Pipe</h2><hr>
+<b>{{months | slice:3}}</b><br>
+<b>{{months | slice:2:6}}</b><br>
+<b>{{months | slice:4:7}}</b><br>
+<b>{{title | slice:6}}</b><br>
+<b>{{title | slice:2:6}}</b>
+
+<h2 style="text-align: center;">Currency Pipe</h2><hr>
+<b>{{6589.23 | currency:"USD"}}</b><br/>
+<b>{{6589.2345 | currency:"USD":true}}</b><br>
+<b>{{6589.23 | currency:"USD":false}}</b>
+
+<h2 style="text-align: center;">Date Pipe</h2><hr>
+<b>{{today}}</b><br/>
+<b>{{today | date:'fullDate'}}</b><br>
+<b>{{today | date}}</b><br/>
+<b>{{today | date:'d/M/y'}}</b><br/>
+<b>{{today | date:'medium'}}</b><br>
+<b>{{today | date:'mediumTime'}}</b><br>
+<b>{{today | date:'short'}}</b><br/>
+<b>{{today | date:'shortTime'}}</b><br>
+
+
+<h2 style="text-align: center;">Decimal Pipe</h2><hr>
+<b>{{ salary}}</b><br>
+<b>{{ salary | number}}</b><br>
+<b>{{ 456.5678 | number}}</b><br>
+<b>{{ 4.787878142 | number: '05.4' }}</b><br>
+<b>{{ 2344.787878142 | number: '5.4' }}</b><br>
+<b>{{ 234.787878142 | number: '5.5' }}</b><br>
+<b>{{ 234.787878142 | number: '3.3' }}</b><br>
+
+<h2 style="text-align: center;">Percent Pipe</h2><hr>
+<b>{{00.54565 | percent}}</b><br>
+<b>{{12.54565 | percent}}</b>
+
+<h2 style="text-align: center;">JSON Pipe</h2><hr>
+<!-- <b>{{jsonval}}</b><br> -->
+<b>{{ jsonval | json | lowercase}}</b><br>
+<!-- <b>{{jsonval1}}</b><br> -->
+<b>{{ jsonval1 | slice:1:3 | json | uppercase}}</b><br><br>
+
+<h2 style="text-align: center;">Multiple Pipe/Pipe Chaining</h2><hr>
+<b>{{today | date | uppercase}}</b><br/>
+<b>{{today | date | lowercase}}</b><br/>
+<b>{{today | date:'fullDate' | uppercase}}</b><br>
+<b>{{today | date:'medium' | lowercase}}</b><br>
+
+<h2 style="text-align: center;">Custom Pipe</h2><hr>
+<h3>Before Applying Pipe</h3>
+<table border="3">
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Gender</th>
+  </tr>
+  <tr *ngFor="let val of employee">
+    <td>{{val.name}}</td>
+    <td>{{val.age}}</td>
+    <td>{{val.gender}}</td>
+  </tr>
+</table>
+
+<h3>After Applying Pipe</h3>
+<table border="3">
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Gender</th>
+  </tr>
+  <tr *ngFor="let val of employee">
+    <td>{{val.name | mypipe : val.gender}}</td>
+    <td>{{val.age}}</td>
+    <td>{{val.gender}}</td>
+  </tr>
+</table>
